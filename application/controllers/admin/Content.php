@@ -30,6 +30,11 @@
 class Content extends Admin_Controller
 {
 
+	protected $permissionCreate = 'Pending_tasks.Content.Create';
+    protected $permissionDelete = 'Pending_tasks.Content.Delete';
+    protected $permissionEdit   = 'Pending_tasks.Content.Edit';
+    protected $permissionView   = 'Pending_tasks.Content.View';
+
 
 	/**
 	 * Controller constructor sets the Title and Permissions
@@ -53,6 +58,21 @@ class Content extends Admin_Controller
 	 */
 	public function index()
 	{
+		parent::__construct();
+        
+        $this->auth->restrict($this->permissionView);
+        $this->load->model('pending_tasks/pending_tasks_model');
+        //$this->lang->load('pending_tasks');
+        
+	    Assets::add_css('flick/jquery-ui-1.8.13.custom.css');
+	    Assets::add_js('jquery-ui-1.8.13.min.js');
+	    Assets::add_css('jquery-ui-timepicker.css');
+	    Assets::add_js('jquery-ui-timepicker-addon.js');
+	    $this->form_validation->set_error_delimiters("<span class='error'>", "</span>");
+        Assets::add_module_js('pending_tasks', 'pending_tasks.js');
+
+        Template::set_view('pending_tasks/content/index');
+
 		Template::set_view('admin/content/index');
 		Template::render();
 	}//end index()

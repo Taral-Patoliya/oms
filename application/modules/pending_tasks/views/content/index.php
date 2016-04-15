@@ -53,7 +53,7 @@ if ($can_delete) {
 						<td><?php e($record->title); ?></td>
 					<?php endif; ?>
 					<td><?php e($record->created_by); ?></td>
-					<td><?php e($record->status); ?></td>
+					<td><?php e($record->status==1?'Done':'Pending'); ?></td>
 					<td><?php e($record->created_on); ?></td>
 				</tr>
 				<?php

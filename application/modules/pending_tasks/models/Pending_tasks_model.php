@@ -81,7 +81,8 @@ class Pending_tasks_model extends BF_Model
 
     public function insert($data = NULL)
     {
-    	$data['created_by'] ='1';
+
+    	$data['created_by'] =$this->auth->user_id();
     	$data['created_on'] = date('Y-m-d H:I:s');
     	$id = parent::insert($data);
     	Events::trigger('after_task_user', $id);
