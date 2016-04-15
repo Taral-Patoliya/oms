@@ -19,23 +19,6 @@ $id = isset($pending_tasks->id) ? $pending_tasks->id : '';
     <h3>Pending Tasks</h3>
     <?php echo form_open($this->uri->uri_string(), 'class="form-horizontal"'); ?>
         <fieldset>
-            
-
-            <?php // Change the values in this array to populate your dropdown as required
-                $options = array(
-                    11 => 11,
-                );
-                echo form_dropdown(array('name' => 'created_by', 'required' => 'required'), $options, set_value('created_by', isset($pending_tasks->created_by) ? $pending_tasks->created_by : ''), lang('pending_tasks_field_created_by') . lang('bf_form_label_required'));
-            ?>
-
-            <div class="control-group<?php echo form_error('created_on') ? ' error' : ''; ?>">
-                <?php echo form_label(lang('pending_tasks_field_created_on'), 'created_on', array('class' => 'control-label')); ?>
-                <div class='controls'>
-                    <input id='created_on' type='text' name='created_on'  value="<?php echo set_value('created_on', isset($pending_tasks->created_on) ? $pending_tasks->created_on : ''); ?>" />
-                    <span class='help-inline'><?php echo form_error('created_on'); ?></span>
-                </div>
-            </div>
-
             <div class="control-group<?php echo form_error('title') ? ' error' : ''; ?>">
                 <?php echo form_label(lang('pending_tasks_field_title') . lang('bf_form_label_required'), 'title', array('class' => 'control-label')); ?>
                 <div class='controls'>
@@ -54,6 +37,8 @@ $id = isset($pending_tasks->id) ? $pending_tasks->id : '';
 
             <?php // Change the values in this array to populate your dropdown as required
                 $options = array(
+                    0 => "Pending",
+                    1  => "Done"
                 );
                 echo form_dropdown(array('name' => 'status', 'required' => 'required'), $options, set_value('status', isset($pending_tasks->status) ? $pending_tasks->status : ''), lang('pending_tasks_field_status') . lang('bf_form_label_required'));
             ?>

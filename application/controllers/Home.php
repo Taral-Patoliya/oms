@@ -61,10 +61,11 @@ class Home extends MX_Controller
 	 */
 	public function index()
 	{
-		$this->load->library('users/auth');
+		redirect('admin');
+		/*$this->load->library('users/auth');
 		$this->set_current_user();
 
-		Template::render();
+		Template::render();*/
 	}//end index()
 
 	//--------------------------------------------------------------------

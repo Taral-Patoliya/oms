@@ -18,7 +18,7 @@ class Content extends Admin_Controller
     public function __construct()
     {
         parent::__construct();
-        echo get_class($this->auth);die;
+        
         $this->auth->restrict($this->permissionView);
         $this->load->model('pending_tasks/pending_tasks_model');
         $this->lang->load('pending_tasks');
